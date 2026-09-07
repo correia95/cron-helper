@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#4338ca" />
+
+    <title>Cron Expression Helper — explain any cron schedule &amp; see next run times</title>
+    <meta
+      name="description"
+      content="Paste a cron expression to get a plain-English description and the next seven run times in your timezone. Handles ranges, steps and lists, and the day-of-month / day-of-week rule. Runs entirely in your browser."
+    />
+    <link rel="canonical" href="https://cron-helper.correia95.workers.dev/" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Cron Expression Helper" />
+    <meta property="og:description" content="Explain any cron schedule in plain English and see exactly when it runs next." />
+    <meta property="og:url" content="https://cron-helper.correia95.workers.dev/" />
+    <meta property="og:image" content="https://cron-helper.correia95.workers.dev/og.svg" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Cron Expression Helper" />
+    <meta name="twitter:description" content="Explain any cron schedule in plain English and see when it runs next." />
+    <meta name="twitter:image" content="https://cron-helper.correia95.workers.dev/og.svg" />
+
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebApplication",
+        "name": "Cron Expression Helper",
+        "url": "https://cron-helper.correia95.workers.dev/",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Any",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+        "description": "Translate a cron expression into plain English and calculate the next run times, entirely in the browser."
+      }
+    </script>
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What are the five fields in a cron expression?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "In order: minute (0-59), hour (0-23), day of month (1-31), month (1-12 or JAN-DEC), and day of week (0-6 or SUN-SAT, where 0 and 7 both mean Sunday). Fields are separated by spaces."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What does */5 mean in cron?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "A slash defines a step. */5 in the minute field means every fifth minute starting from 0, i.e. minutes 0, 5, 10, 15 and so on. You can also step within a range, for example 0-30/10."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "If I set both the day-of-month and the day-of-week, does cron need both to match?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. When both fields are restricted, cron runs the job when either one matches. For example 0 0 13 * 5 runs every Friday and also on the 13th of every month."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does this tool support @daily, seconds or the L and W characters?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. It parses the standard 5-field POSIX format with asterisks, ranges, steps, lists and month/day names. Named macros, a sixth seconds field, and the Quartz extensions L, W and # are not supported."
+            }
+          }
+        ]
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+    <noscript>
+      <p style="text-align: center; padding: 20px">
+        Cron Expression Helper needs JavaScript. It translates a five-field cron expression (minute,
+        hour, day of month, month, day of week) into plain English and lists the next run times.
+      </p>
+    </noscript>
+  </body>
+</html>
